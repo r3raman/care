@@ -37,7 +37,7 @@ Route::group(['middleware' => 'auth'], function () {
     })->name('scheduler');
     Route::get('/advance-sidebar', function () {
         return view('backend.pages.advance-sidebar');
-    })->name('table1');
+    })->name('table');
 });
 
 
