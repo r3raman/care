@@ -117,14 +117,8 @@ var KTApexChartsDemo = function () {
 		const apexChart = "#chart_3";
 		var options = {
 			series: [{
-				name: 'Net Profit',
-				data: [44, 55, 57, 56, 61, 58, 63, 60, 66]
-			}, {
-				name: 'Revenue',
-				data: [76, 85, 101, 98, 87, 105, 91, 114, 94]
-			}, {
-				name: 'Free Cash Flow',
-				data: [35, 41, 36, 26, 45, 48, 52, 53, 41]
+				name: 'Billed per Day',
+				data: [44, 55, 57, 56, 61]
 			}],
 			chart: {
 				type: 'bar',
@@ -146,7 +140,7 @@ var KTApexChartsDemo = function () {
 				colors: ['transparent']
 			},
 			xaxis: {
-				categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
+				categories: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
 			},
 			yaxis: {
 				title: {
@@ -174,20 +168,14 @@ var KTApexChartsDemo = function () {
 		const apexChart = "#chart_4";
 		var options = {
 			series: [{
-				name: 'Marine Sprite',
-				data: [44, 55, 41, 37, 22, 43, 21]
+				name: 'Scheduled Sessions',
+				data: [44, 55, 41, 37, 22]
 			}, {
-				name: 'Striking Calf',
-				data: [53, 32, 33, 52, 13, 43, 32]
+				name: 'Rendered Sessions',
+				data: [53, 32, 33, 52, 13]
 			}, {
-				name: 'Tank Picture',
-				data: [12, 17, 11, 9, 15, 11, 20]
-			}, {
-				name: 'Bucket Slope',
-				data: [9, 7, 5, 8, 6, 9, 4]
-			}, {
-				name: 'Reborn Kid',
-				data: [25, 12, 19, 32, 25, 24, 10]
+				name: 'Billed Sessions',
+				data: [12, 17, 11, 9, 15]
 			}],
 			chart: {
 				type: 'bar',
@@ -204,10 +192,10 @@ var KTApexChartsDemo = function () {
 				colors: ['#fff']
 			},
 			title: {
-				text: 'Fiction Books Sales'
+				text: 'Claim Management'
 			},
 			xaxis: {
-				categories: [2008, 2009, 2010, 2011, 2012, 2013, 2014],
+				categories: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
 				labels: {
 					formatter: function (val) {
 						return val + "K"
@@ -960,12 +948,12 @@ var KTApexChartsDemo = function () {
 	var _demo12 = function () {
 		const apexChart = "#chart_12";
 		var options = {
-			series: [44, 55, 13, 43, 22],
+			series: [44, 55, 13],
 			chart: {
 				width: 380,
 				type: 'pie',
 			},
-			labels: ['Team A', 'Team B', 'Team C', 'Team D', 'Team E'],
+			labels: ['Scheduled', 'Rendered', 'Billed'],
 			responsive: [{
 				breakpoint: 480,
 				options: {

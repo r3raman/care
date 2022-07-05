@@ -4,7 +4,7 @@
         <!--begin::Copyright-->
         <div class="text-dark order-2 order-md-1">
             <span class="text-muted font-weight-bold mr-2">2021©</span>
-            <a href="http://Imfutech.com/metronic" target="_blank" class="text-dark-75 text-hover-primary">Imfutech</a>
+            <a href="https://imfu.tech" target="_blank" class="text-dark-75 text-hover-primary">IMFUTECH</a>
         </div>
         <!--end::Copyright-->
         <!--begin::Nav-->

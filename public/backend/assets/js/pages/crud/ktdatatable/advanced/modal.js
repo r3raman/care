@@ -5,19 +5,29 @@ var KTDatatableModal = function() {
 
     var initDatatable = function() {
         var el = $('#kt_datatable');
+        var _token = $("input[name*='_token']").val();
+        $.ajaxSetup({
+          headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+        });
 
         var datatable = el.KTDatatable({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
             // datasource definition
             data: {
+                _token: $('meta[name="csrf-token"]').attr('content'),
                 type: 'remote',
                 source: {
                     read: {
-                        url: HOST_URL + '/api/datatables/demos/customers.php',
+                        url:  'http://localhost/care/client/show',
                     },
                 },
-                pageSize: 10, // display 20 records per page
+                pageSize: 5, // display 20 records per page
                 serverPaging: true,
-                serverFiltering: false,
+                serverFiltering: true,
                 serverSorting: true,
             },
 
@@ -41,91 +51,72 @@ var KTDatatableModal = function() {
 
             // columns definition
             columns: [{
-                field: 'RecordID',
+                field: 'id',
                 title: '',
                 sortable: false,
-                width: 30,
+                width: 20,
                 textAlign: 'center',
             }, {
-                field: 'FirstName',
-                title: 'First Name',
+                field: 'client_name',
+                title: 'Client Name',
                 sortable: 'asc',
             }, {
-                field: 'LastName',
-                title: 'Last Name',
+                field: 'dob',
+                title: 'DOB',
+                width: 100,
             }, {
-                field: 'Company',
-                title: 'Company',
+                field: 'gender',
+                title: 'Gender',
+                width: 100,
             }, {
-                field: 'Email',
+                field: 'email',
                 title: 'Email',
+                width: 200,
             }, {
-                field: 'Phone',
-                title: 'Phone',
-            }, {
-                field: 'Status',
-                title: 'Status',
-                // callback function support for column rendering
-                template: function(row) {
-                    var status = {
-                        1: {
-                            'title': 'Pending',
-                            'class': 'label-light-primary'
-                        },
-                        2: {
-                            'title': 'Delivered',
-                            'class': ' label-light-success'
-                        },
-                        3: {
-                            'title': 'Canceled',
-                            'class': ' label-light-primary'
-                        },
-                        4: {
-                            'title': 'Success',
-                            'class': ' label-light-success'
-                        },
-                        5: {
-                            'title': 'Info',
-                            'class': ' label-light-info'
-                        },
-                        6: {
-                            'title': 'Danger',
-                            'class': ' label-light-danger'
-                        },
-                        7: {
-                            'title': 'Warning',
-                            'class': ' label-light-warning'
-                        },
-                    };
-                    return '<span class="label label-lg font-weight-bold' + status[row.Status].class + ' label-inline">' + status[row.Status].title + '</span>';
-                },
-            }, {
-                field: 'Type',
-                title: 'Type',
-                autoHide: false,
-                // callback function support for column rendering
-                template: function(row) {
-                    var status = {
-                        1: {
-                            'title': 'Online',
-                            'state': 'danger'
-                        },
-                        2: {
-                            'title': 'Retail',
-                            'state': 'primary'
-                        },
-                        3: {
-                            'title': 'Direct',
-                            'state': 'accent'
-                        },
-                    };
-                    return '<span class="label label-' + status[row.Type].state + ' label-dot mr-2"></span><span class="font-weight-bold text-' + status[row.Type].state +
-                        '">' +
-                        status[row.Type].title + '</span>';
-                },
-            }, {
+                field: 'account_number',
+                title: 'Account #',
+            }, 
+            // {
+            //     field: 'Status',
+            //     title: 'Status',
+            //     // callback function support for column rendering
+            //     template: function(row) {
+            //         var status = {
+            //             1: {
+            //                 'title': 'Pending',
+            //                 'class': 'label-light-primary'
+            //             },
+            //             2: {
+            //                 'title': 'Delivered',
+            //                 'class': ' label-light-success'
+            //             },
+            //             3: {
+            //                 'title': 'Canceled',
+            //                 'class': ' label-light-primary'
+            //             },
+            //             4: {
+            //                 'title': 'Success',
+            //                 'class': ' label-light-success'
+            //             },
+            //             5: {
+            //                 'title': 'Info',
+            //                 'class': ' label-light-info'
+            //             },
+            //             6: {
+            //                 'title': 'Danger',
+            //                 'class': ' label-light-danger'
+            //             },
+            //             7: {
+            //                 'title': 'Warning',
+            //                 'class': ' label-light-warning'
+            //             },
+            //         };
+            //         return '<span class="label label-lg font-weight-bold' + status[row.Status].class + ' label-inline">' + status[row.Status].title + '</span>';
+            //     },
+            // }, 
+             {
                 field: 'Actions',
-                width: 130,
+                width: 200,
                 title: 'Actions',
                 sortable: false,
                 overflow: 'visible',
@@ -133,14 +124,21 @@ var KTDatatableModal = function() {
                 autoHide: false,
                 template: function(row) {
                     return '\
-		                  <button data-record-id="' + row.RecordID + '" class="btn btn-sm btn-clean" title="View records">\
-		                      <i class="flaticon2-document"></i> Details\
-		                  </button>';
+		                  <button data-record-id="' + row.id + '" class="btn btn-sm btn-clean" title="View Authorizations">\
+		                      <i class="flaticon2-document"></i> Auths\
+		                  </button>\
+                          <button data-record-id="' + row.id + '" class="btn btn-sm btn-clean" title="Edit Client">\
+                              <i class="flaticon2-pen"></i> Edit\
+                          </button>';
                 },
             }],
         });
 
         var card = datatable.closest('.card');
+
+        $('#kt_search').on('click', function() {
+            datatable.search($("#kt_val1").val(), 'FirstName');
+        });
 
         $('#kt_datatable_search_status').on('change', function() {
             datatable.search($(this).val().toLowerCase(), 'Status');
@@ -162,14 +160,15 @@ var KTDatatableModal = function() {
         var el = $('#kt_datatable_sub');
         var datatable = el.KTDatatable({
             data: {
+                patient_id : id,
                 type: 'remote',
                 source: {
                     read: {
-                        url: HOST_URL + '/api/datatables/demos/orders.php',
+                        url: 'http://localhost/care/auth/show',
                         params: {
                             query: {
                                 generalSearch: '',
-                                CustomerID: id,
+                                patient_id: id,
                             },
                         },
                     },
@@ -197,93 +196,91 @@ var KTDatatableModal = function() {
 
             // columns definition
             columns: [{
-                field: 'RecordID',
+                field: 'patient_id',
                 title: '#',
                 sortable: false,
                 width: 30,
             }, {
-                field: 'OrderID',
-                title: 'Order ID',
+                field: 'authorization',
+                title: 'Auth #',
                 template: function(row) {
-                    return '<span>' + row.OrderID + ' - ' + row.ShipCountry + '</span>';
+                    return '<span>' + row.authorization + ' - ' + row.payer_name + '</span>';
                 },
             }, {
-                field: 'ShipCountry',
-                title: 'Country',
+                field: 'speciality',
+                title: 'Speciality',
+                autoHide: false,
+            }, {
+                field: 'effective_start',
+                title: 'Start Date',
                 width: 100,
             }, {
-                field: 'ShipAddress',
-                title: 'Ship Address',
-            }, {
-                field: 'ShipName',
-                title: 'Ship Name',
-                autoHide: false,
-            }, {
-                field: 'TotalPayment',
-                title: 'Payment',
-                type: 'number',
-            }, {
-                field: 'Status',
-                title: 'Status',
-                // callback function support for column rendering
-                template: function(row) {
-                    var status = {
-                        1: {
-                            'title': 'Pending',
-                            'class': 'label-primary'
-                        },
-                        2: {
-                            'title': 'Delivered',
-                            'class': ' label-success'
-                        },
-                        3: {
-                            'title': 'Canceled',
-                            'class': ' label-primary'
-                        },
-                        4: {
-                            'title': 'Success',
-                            'class': ' label-success'
-                        },
-                        5: {
-                            'title': 'Info',
-                            'class': ' label-info'
-                        },
-                        6: {
-                            'title': 'Danger',
-                            'class': ' label-danger'
-                        },
-                        7: {
-                            'title': 'Warning',
-                            'class': ' label-warning'
-                        },
-                    };
-                    return '<span class="label font-weight-bold label-lg ' + status[row.Status].class + ' label-inline label-pill">' + status[row.Status].title + '</span>';
-                },
-            }, {
-                field: 'Type',
-                title: 'Type',
-                autoHide: false,
-                // callback function support for column rendering
-                template: function(row) {
-                    var status = {
-                        1: {
-                            'title': 'Online',
-                            'state': 'danger'
-                        },
-                        2: {
-                            'title': 'Retail',
-                            'state': 'primary'
-                        },
-                        3: {
-                            'title': 'Direct',
-                            'state': 'accent'
-                        },
-                    };
-                    return '<span class="label label-' + status[row.Type].state + ' label-dot"></span>&nbsp;<span class="font-weight-bold text-' +
-                        status[row.Type].state + '">' +
-                        status[row.Type].title + '</span>';
-                },
-            }],
+                field: 'effective_end',
+                title: 'End Date',
+            }
+            // , {
+            //     field: 'Status',
+            //     title: 'Status',
+            //     // callback function support for column rendering
+            //     template: function(row) {
+            //         var status = {
+            //             1: {
+            //                 'title': 'Pending',
+            //                 'class': 'label-primary'
+            //             },
+            //             2: {
+            //                 'title': 'Delivered',
+            //                 'class': ' label-success'
+            //             },
+            //             3: {
+            //                 'title': 'Canceled',
+            //                 'class': ' label-primary'
+            //             },
+            //             4: {
+            //                 'title': 'Success',
+            //                 'class': ' label-success'
+            //             },
+            //             5: {
+            //                 'title': 'Info',
+            //                 'class': ' label-info'
+            //             },
+            //             6: {
+            //                 'title': 'Danger',
+            //                 'class': ' label-danger'
+            //             },
+            //             7: {
+            //                 'title': 'Warning',
+            //                 'class': ' label-warning'
+            //             },
+            //         };
+            //         return '<span class="label font-weight-bold label-lg ' + status[row.Status].class + ' label-inline label-pill">' + status[row.Status].title + '</span>';
+            //     },
+            // }, {
+            //     field: 'Type',
+            //     title: 'Type',
+            //     autoHide: false,
+            //     // callback function support for column rendering
+            //     template: function(row) {
+            //         var status = {
+            //             1: {
+            //                 'title': 'Online',
+            //                 'state': 'danger'
+            //             },
+            //             2: {
+            //                 'title': 'Retail',
+            //                 'state': 'primary'
+            //             },
+            //             3: {
+            //                 'title': 'Direct',
+            //                 'state': 'accent'
+            //             },
+            //         };
+            //         return '<span class="label label-' + status[row.Type].state + ' label-dot"></span>&nbsp;<span class="font-weight-bold text-' +
+            //             status[row.Type].state + '">' +
+            //             status[row.Type].title + '</span>';
+            //     },
+            // }
+            ],
         });
 
         var modal = datatable.closest('.modal');

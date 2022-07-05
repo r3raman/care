@@ -28,6 +28,14 @@ Route::group(['middleware' => 'auth'], function () {
         return view('backend.pages.add_client');
     })->name('add_client');
 
+    // Route::get('/clients_list', function () {
+    //     return view('backend.pages.clients_list');
+    // })->name('clients_list');
+
+    Route::get('/providers_list', function () {
+        return view('backend.pages.providers_list');
+    })->name('providers_list');
+
     Route::get('/dashboard-sidebar', function () {
         return view('backend.pages.dashboard-sidebar');
     })->name('dashboard.sidebar');
@@ -38,6 +46,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/advance-sidebar', function () {
         return view('backend.pages.advance-sidebar');
     })->name('table2');
+
+    Route::post('client/store', 'App\Http\Controllers\ClientController@store')->name('store_client');
+    Route::any('client/show', 'App\Http\Controllers\ClientController@show')->name('get_clients');
+    Route::any('auth/show', 'App\Http\Controllers\AuthorizationController@show')->name('get_auths');
+    Route::get('clients_list', 'App\Http\Controllers\ClientController@index')->name('clients_list');
 });
 
 

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<meta name="csrf-token" content="{{ csrf_token() }}">
 @include('backend.layouts.head')
 <body id="kt_body" class="header-fixed header-mobile-fixed subheader-enabled sidebar-enabled page-loading">
     <!------------------------------------------------------------------------------------------------>

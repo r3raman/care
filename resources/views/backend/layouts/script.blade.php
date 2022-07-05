@@ -11,7 +11,10 @@
 <script src="{{asset('backend/assets/plugins/custom/prismjs/prismjs.bundle.js')}}"></script>
 <script src="{{asset('backend/assets/js/scripts.bundle.js')}}"></script>
 <script src="{{asset('backend/assets/js/function.js')}}"></script>
-<script src="{{asset('backend/assets/plugins/custom/datatables/datatables.bundle.js')}}"></script>
+
+<script src="{{asset('backend/assets/js/pages/features/charts/apexcharts.js')}}"></script>
+<script src="{{asset('backend/assets/js/pages/widgets.js')}}"></script>
+<script src="{{asset('backend/assets/js/pages/crud/ktdatatable/advanced/modal.js')}}"></script>
 <!--end::Page Vendors-->
 <!--begin::Page Scripts(used by this page)-->
 <script src="{{asset('backend/assets/js/pages/crud/datatables/data-sources/html.js')}}"></script>
@@ -22,6 +25,7 @@
 <script src="{{asset('backend/assets/js/dhtmlxscheduler.js')}}"></script>
 <script src="{{asset('backend/assets/codebase/ext/dhtmlxscheduler_minical.js?v=5.3.11')}}"></script>
 <script src="{{asset('backend/assets/codebase/ext/dhtmlxscheduler_editors.js?v=5.3.11')}}"></script>
+
 <!--end::Page Vendors-->
 <!--begin::Page Scripts(used by this page)-->
 

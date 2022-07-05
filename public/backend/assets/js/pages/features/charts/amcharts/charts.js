@@ -2317,7 +2317,7 @@ var KTamChartsChartsDemo = function() {
             "pullOutRadius": 20,
             "marginTop": 30,
             "titles": [{
-                "text": "South African Economy"
+                "text": "Practice Name"
             }],
             "allLabels": [{
                 "y": "54%",

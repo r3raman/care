@@ -28,7 +28,7 @@
                                 <div class="wizard-step" data-wizard-type="step" data-wizard-state="pending">
                                     <div class="wizard-label">
                                         <h3 class="wizard-title">
-                                        <span>2.</span>Guarantor Info</h3>
+                                        <span>2.</span>Other & Guarantor Info</h3>
                                         <div class="wizard-bar"></div>
                                     </div>
                                 </div>
@@ -37,7 +37,7 @@
                                 <div class="wizard-step" data-wizard-type="step" data-wizard-state="pending">
                                     <div class="wizard-label">
                                         <h3 class="wizard-title">
-                                        <span>3.</span>Other Info</h3>
+                                        <span>3.</span>Insurance & Auth Info</h3>
                                         <div class="wizard-bar"></div>
                                     </div>
                                 </div>
@@ -46,7 +46,7 @@
                                 <div class="wizard-step" data-wizard-type="step" data-wizard-state="pending">
                                     <div class="wizard-label">
                                         <h3 class="wizard-title">
-                                        <span>4.</span>Insurance &amp; Auth</h3>
+                                        <span>4.</span>Services Info</h3>
                                         <div class="wizard-bar"></div>
                                     </div>
                                 </div>
@@ -58,7 +58,9 @@
                         <div class="row justify-content-center py-10 px-8 py-lg-12 px-lg-10" style="padding-top: 0px !important;">
                             <div class="col-xl-12 col-xxl-12">
                                 <!--begin: Wizard Form-->
-                                <form class="form fv-plugins-bootstrap fv-plugins-framework" id="kt_form">
+                                <form class="form fv-plugins-bootstrap fv-plugins-framework" id="kt_form" method="post" action="{{route('store_client')}}">
+                                    @csrf
+                                    @method('POST')
                                     <!--begin: Wizard Step 1-->
                                     <div class="pb-5" data-wizard-type="step-content" data-wizard-state="current">
                                         <!-- <h4 class="mb-10 font-weight-bold text-dark">Setup Your Current Location</h4> -->
@@ -67,15 +69,15 @@
                                                 <div class="form-group row">
                                                     <div class="col-lg-4">
                                                         <label>First Name:</label>
-                                                        <input type="text" class="form-control" placeholder="Enter first name">
+                                                        <input type="text" class="form-control" name="first_name" placeholder="Enter first name">
                                                     </div>
                                                     <div class="col-lg-4">
                                                         <label>Middle Name:</label>
-                                                        <input type="text" class="form-control" placeholder="Enter middle name">
+                                                        <input type="text" class="form-control" name="middle_name" placeholder="Enter middle name">
                                                     </div>
                                                     <div class="col-lg-4">
                                                         <label>Last Name:</label>
-                                                        <input type="text" class="form-control" placeholder="Enter last name">
+                                                        <input type="text" class="form-control" name="last_name" placeholder="Enter last name">
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
@@ -83,12 +85,12 @@
                                                         <label>Gender:</label>
                                                         <div class="radio-inline">
                                                             <label class="radio radio-solid">
-                                                                <input type="radio" name="example_2" checked="checked" value="2">
+                                                                <input type="radio" name="gender" checked="checked" value="male">
                                                                 <span></span>
                                                                 Male
                                                             </label>
                                                             <label class="radio radio-solid">
-                                                                <input type="radio" name="example_2" value="2">
+                                                                <input type="radio" name="gender" value="female">
                                                                 <span></span>
                                                                 Female
                                                             </label>
@@ -96,29 +98,29 @@
                                                     </div>
                                                     <div class="col-lg-4">
                                                         <label>DOB:</label>
-                                                        <input type="text" class="form-control" placeholder="Enter Date of Birth">
+                                                        <input type="text" class="form-control" name="dob" placeholder="Enter Date of Birth">
                                                     </div>
                                                     
                                                     <div class="col-lg-4">
                                                         <label>Email:</label>
                                                         <div class="input-group">
-                                                            <input type="email" class="form-control" placeholder="Enter email address">
+                                                            <input type="email" class="form-control" name="email" placeholder="Enter email address">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
                                                     <div class="col-lg-4">
                                                         <label>Phone:</label>
-                                                        <input type="text" class="form-control" placeholder="Enter phone number">
+                                                        <input type="text" class="form-control" name="phone_home" placeholder="Enter phone number">
                                                     </div>
                                                     <div class="col-lg-4">
                                                         <label>Mobile:</label>
-                                                        <input type="text" class="form-control" placeholder="Enter mobile number">
+                                                        <input type="text" class="form-control" name="phone_mobile" placeholder="Enter mobile number">
                                                     </div>
                                                     
                                                     <div class="col-lg-4">
                                                         <label>Address:</label>
-                                                        <input type="text" class="form-control" placeholder="Enter Address">
+                                                        <input type="text" class="form-control" name="addr" placeholder="Enter Address">
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
@@ -126,16 +128,16 @@
                                                         <label>Postcode:</label>
                                                         <div class="input-group">
                                                             <!-- <div class="input-group-append"><span class="input-group-text"><i class="la la-bookmark-o"></i></span></div> -->
-                                                            <input type="text" class="form-control" placeholder="Enter your postcode">
+                                                            <input type="text" class="form-control" name="addr_zip" placeholder="Enter your postcode">
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-4">
                                                         <label>City:</label>
-                                                        <input type="text" class="form-control" placeholder="Enter City">
+                                                        <input type="text" class="form-control" name="addr_city" placeholder="Enter City">
                                                     </div>
                                                     <div class="col-lg-4">
                                                         <label>State:</label>
-                                                        <input type="text" class="form-control" placeholder="Enter State">
+                                                        <input type="text" class="form-control" name="addr_state" placeholder="Enter State">
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
@@ -143,7 +145,7 @@
                                                     <div class="col-2">
                                                         <span class="switch switch-icon">
                                                             <label>
-                                                                <input type="checkbox" name="">
+                                                                <input type="checkbox" name="is_client_portal" value="1">
                                                                 <span></span>
                                                             </label>
                                                         </span>
@@ -152,214 +154,610 @@
                                                     <div class="col-lg-4 col-xl-4">
                                                         <div class="checkbox-inline">
                                                             <label class="checkbox">
-                                                            <input type="checkbox" checked="checked">
+                                                            <input type="checkbox" checked="checked" name="is_email" value="1">
                                                             <span></span>Email</label>
                                                             <label class="checkbox">
-                                                            <input type="checkbox" checked="checked">
+                                                            <input type="checkbox" checked="checked" name="is_sms" value="1">
                                                             <span></span>SMS</label>
-                                                            <label class="checkbox">
                                                         </label></div>
                                                     </div>
                                                 </div>
                                             </div>
                                         
-                                    </div><div></div><div></div><div></div><div></div></form>
+                                    </div><div></div><div></div><div></div><div></div>
                                     <!--end: Wizard Step 1-->
                                     <!--begin: Wizard Step 2-->
                                     <div class="pb-5" data-wizard-type="step-content">
-                                        <h4 class="font-weight-bold text-dark">Enter the Guarantor Info</h4>
-                                        <form class="form">
+                                        <h4 class="mb-10 font-weight-bold text-dark">Provider & Billing Location Info</h4>
                                             <div class="card-body">
                                                 <div class="form-group row">
-                                                    <div class="col-lg-4">
-                                                        <label>First Name:</label>
-                                                        <input type="text" class="form-control" placeholder="Enter first name">
+                                                    <div class="col-lg-3">
+                                                        <label>Rendering Provider (Box # 31):</label>
+                                                        <select class="form-control" name="provider_id">
+                                                            <option value="">-- Select Provider --</option>
+                                                            <option value="1">Provider A</option>
+                                                            <option value="2">Provider B</option>
+                                                        </select>
                                                     </div>
-                                                    <div class="col-lg-4">
-                                                        <label>Middle Name:</label>
-                                                        <input type="text" class="form-control" placeholder="Enter middle name">
-                                                    </div>
-                                                    <div class="col-lg-4">
-                                                        <label>Last Name:</label>
-                                                        <input type="text" class="form-control" placeholder="Enter last name">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <div class="col-lg-4">
-                                                        <label>Gender:</label>
-                                                        <div class="radio-inline">
-                                                            <label class="radio radio-solid">
-                                                                <input type="radio" name="example_2" checked="checked" value="2">
-                                                                <span></span>
-                                                                Male
-                                                            </label>
-                                                            <label class="radio radio-solid">
-                                                                <input type="radio" name="example_2" value="2">
-                                                                <span></span>
-                                                                Female
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-4">
-                                                        <label>DOB:</label>
-                                                        <input type="text" class="form-control" placeholder="Enter Date of Birth">
-                                                    </div>
-                                                    
-                                                    <div class="col-lg-4">
-                                                        <label>Email:</label>
-                                                        <div class="input-group">
-                                                            <input type="email" class="form-control" placeholder="Enter email address">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <div class="col-lg-4">
-                                                        <label>Phone:</label>
-                                                        <input type="text" class="form-control" placeholder="Enter phone number">
-                                                    </div>
-                                                    <div class="col-lg-4">
-                                                        <label>Mobile:</label>
-                                                        <input type="text" class="form-control" placeholder="Enter mobile number">
-                                                    </div>
-                                                    
-                                                    <div class="col-lg-4">
-                                                        <label>Address:</label>
-                                                        <input type="text" class="form-control" placeholder="Enter Address">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <div class="col-lg-4">
-                                                        <label>Postcode:</label>
-                                                        <div class="input-group">
-                                                            <!-- <div class="input-group-append"><span class="input-group-text"><i class="la la-bookmark-o"></i></span></div> -->
-                                                            <input type="text" class="form-control" placeholder="Enter your postcode">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-4">
-                                                        <label>City:</label>
-                                                        <input type="text" class="form-control" placeholder="Enter City">
-                                                    </div>
-                                                    <div class="col-lg-4">
-                                                        <label>State:</label>
-                                                        <input type="text" class="form-control" placeholder="Enter State">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <div class="col-lg-4">
-                                                        <label>Relationship:</label>
-                                                        <select class="form-control">
-                                                            <option value="">-- Select Relationship --</option>
-                                                            <option value="Self">Self</option>
-                                                            <option value="Child">Child</option>
-                                                            <option value="Spouse">Spouse</option>
-                                                            <option value="Others">Others</option>
+                                                    <div class="col-lg-3">
+                                                        <label>Location (Box # 32):</label>
+                                                        <select class="form-control" name="default_location">
+                                                            <option value="">-- Select Location --</option>
+                                                            <option value="1">Location A</option>
+                                                            <option value="2">Location B</option>
                                                         </select>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </form>
+                                        
+                                        <h4 class="mb-10 font-weight-bold text-dark">Guarantor Info</h4>
+                                        <div class="form-group row">
+                                            <div class="col-lg-4">
+                                                <label>Relationship:</label>
+                                                <select class="form-control" id="relationship" name="relationship">
+                                                    <option value="">-- Select Relationship --</option>
+                                                    <option value="Self">Self</option>
+                                                    <option value="Child">Child</option>
+                                                    <option value="Spouse">Spouse</option>
+                                                    <option value="Others">Others</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div id="guarantorDiv">
+                                        <h4 class="font-weight-bold text-dark">Enter the Guarantor Info</h4>
+                                        <div class="card-body">
+                                            <div class="form-group row">
+                                                <div class="col-lg-3">
+                                                    <label>First Name:</label>
+                                                    <input type="text" class="form-control" name="guarantor_first_name" placeholder="Enter first name">
+                                                </div>
+                                                <div class="col-lg-3">
+                                                    <label>Middle Name:</label>
+                                                    <input type="text" class="form-control" name="guarantor_middle_name" placeholder="Enter middle name">
+                                                </div>
+                                                <div class="col-lg-3">
+                                                    <label>Last Name:</label>
+                                                    <input type="text" class="form-control" name="guarantor_last_name" placeholder="Enter last name">
+                                                </div>
+                                                <div class="col-lg-3">
+                                                    <label>Gender:</label>
+                                                    <div class="radio-inline">
+                                                        <label class="radio radio-solid">
+                                                            <input type="radio" name="guarantor_gender" checked="checked" value="male">
+                                                            <span></span>
+                                                            Male
+                                                        </label>
+                                                        <label class="radio radio-solid">
+                                                            <input type="radio" name="guarantor_gender" value="female">
+                                                            <span></span>
+                                                            Female
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-lg-3">
+                                                    <label>DOB:</label>
+                                                    <input type="text" class="form-control" name="guarantor_dob" placeholder="Enter Date of Birth">
+                                                </div>
+                                                <div class="col-lg-3">
+                                                    <label>Email:</label>
+                                                    <div class="input-group">
+                                                        <input type="email" class="form-control" name="guarantor_email" placeholder="Enter email address">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3">
+                                                    <label>Phone:</label>
+                                                    <input type="text" class="form-control" name="guarantor_phone_home" placeholder="Enter phone number">
+                                                </div>
+                                                <div class="col-lg-3">
+                                                    <label>Mobile:</label>
+                                                    <input type="text" class="form-control" name="guarantor_phone_mobile" placeholder="Enter mobile number">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-lg-3">
+                                                    <label>Address:</label>
+                                                    <input type="text" class="form-control" name="guarantor_addr" placeholder="Enter Address">
+                                                </div>
+                                                <div class="col-lg-3">
+                                                    <label>Postcode:</label>
+                                                    <div class="input-group">
+                                                        <!-- <div class="input-group-append"><span class="input-group-text"><i class="la la-bookmark-o"></i></span></div> -->
+                                                        <input type="text" class="form-control" name="guarantor_addr_zip" placeholder="Enter your postcode">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3">
+                                                    <label>City:</label>
+                                                    <input type="text" class="form-control" name="guarantor_addr_city" placeholder="Enter City">
+                                                </div>
+                                                <div class="col-lg-3">
+                                                    <label>State:</label>
+                                                    <input type="text" class="form-control" name="guarantor_addr_state" placeholder="Enter State">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        </div>
                                     </div>
                                     <!--end: Wizard Step 2-->
                                     <!--begin: Wizard Step 3-->
                                     <div class="pb-5" data-wizard-type="step-content">
-                                        <h4 class="mb-10 font-weight-bold text-dark">Billing Location Info</h4>
-                                        <form class="form">
-                                            <div class="card-body">
-                                                <div class="form-group row">
-                                                    <div class="col-lg-6">
-                                                        <label>Location (Box # 32):</label>
-                                                        <select class="form-control">
-                                                            <option value="">-- Select Location --</option>
-                                                            <option value="">Location A</option>
-                                                            <option value="">Location B</option>
-                                                        </select>
+                                        <div class="accordion accordion-solid accordion-svg-toggle" id="accordionExample7">
+                                            <div class="card">
+                                                <div class="card-header" id="headingOne7">
+                                                    <div class="card-title" data-toggle="collapse" data-target="#collapseOne7">
+                                                        <span class="svg-icon svg-icon-primary">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                                    <polygon points="0 0 24 0 24 24 0 24"></polygon>
+                                                                    <path d="M12.2928955,6.70710318 C11.9023712,6.31657888 11.9023712,5.68341391 12.2928955,5.29288961 C12.6834198,4.90236532 13.3165848,4.90236532 13.7071091,5.29288961 L19.7071091,11.2928896 C20.085688,11.6714686 20.0989336,12.281055 19.7371564,12.675721 L14.2371564,18.675721 C13.863964,19.08284 13.2313966,19.1103429 12.8242777,18.7371505 C12.4171587,18.3639581 12.3896557,17.7313908 12.7628481,17.3242718 L17.6158645,12.0300721 L12.2928955,6.70710318 Z" fill="#000000" fill-rule="nonzero"></path>
+                                                                    <path d="M3.70710678,15.7071068 C3.31658249,16.0976311 2.68341751,16.0976311 2.29289322,15.7071068 C1.90236893,15.3165825 1.90236893,14.6834175 2.29289322,14.2928932 L8.29289322,8.29289322 C8.67147216,7.91431428 9.28105859,7.90106866 9.67572463,8.26284586 L15.6757246,13.7628459 C16.0828436,14.1360383 16.1103465,14.7686056 15.7371541,15.1757246 C15.3639617,15.5828436 14.7313944,15.6103465 14.3242754,15.2371541 L9.03007575,10.3841378 L3.70710678,15.7071068 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" transform="translate(9.000003, 11.999999) rotate(-270.000000) translate(-9.000003, -11.999999) "></path>
+                                                                </g>
+                                                            </svg>
+                                                        </span>
+                                                        <div class="card-label pl-4">Primary Insurance</div>
+                                                    </div>
+                                                </div>
+                                                <div id="collapseOne7" class="collapse show" data-parent="#accordionExample7">
+                                                    <div class="card-body pl-12">
+                                                        <h4 class="mb-10 font-weight-bold text-dark">Primary Insurance Information</h4>
+                                                        <div class="form-group row">
+                                                            <div class="col-lg-3">
+                                                                <label>Insurance Name</label>
+                                                                <select class="form-control" name="p_payer_id">
+                                                                    <option value="">-- Select Insurance --</option>
+                                                                    <option value="1">Aetna</option>
+                                                                    <option value="2">Emblem Health</option>
+                                                                    <option value="3">United Health Care</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-lg-3">
+                                                                <label>Policy ID</label>
+                                                                <input type="text" class="form-control" name="p_policy_number" placeholder="Enter Policy #">
+                                                            </div>
+                                                            <div class="col-lg-3">
+                                                                <label>Eff. Start Dt</label>
+                                                                <input type="text" class="form-control" name="p_policy_start" placeholder="Policy Start Date">
+                                                            </div>
+                                                            <div class="col-lg-3">
+                                                                <label>Eff. End Dt</label>
+                                                                <input type="text" class="form-control" name="p_policy_end" placeholder="Policy End Date">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <div class="col-lg-3">
+                                                                <label>Group ID</label>
+                                                                <input type="text" class="form-control" name="p_group_id" placeholder="Enter Group No.">
+                                                            </div>
+                                                            <div class="col-lg-3">
+                                                                <label>Group Name</label>
+                                                                <input type="text" class="form-control" name="p_group_name" placeholder="Enter Group Name">
+                                                            </div>
+                                                            <div class="col-lg-3">
+                                                                <label>Copay</label>
+                                                                <input type="text" class="form-control" name="p_copay" placeholder="Enter Copay">
+                                                            </div>
+                                                            <div class="col-lg-3">
+                                                                <label>Deductible</label>
+                                                                <input type="text" class="form-control" name="p_deductible" placeholder="Enter Deductible">
+                                                            </div>
+                                                        </div>
+                                                        <h4 class="mb-10 font-weight-bold text-dark">Auth Information</h4>
+                                                        <div class="form-group row">
+                                                            <div class="col-lg-3">
+                                                                <label>Auth #</label>
+                                                                <input type="text" class="form-control" name="p_authorization" placeholder="Enter Authorization number">
+                                                            </div>
+                                                            <div class="col-lg-3">
+                                                                <label>Serivce</label>
+                                                                <select class="form-control" name="p_speciality">
+                                                                    <option value="">-- Select Service Type --</option>
+                                                                    <option value="1">Behavior Therapy</option>
+                                                                    <option value="2">Speech Therapy</option>
+                                                                    <option value="3">Occupational Therapy</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-lg-3">
+                                                                <label>Status</label>
+                                                                <select class="form-control" name="p_auth_status">
+                                                                    <option value="">-- Select Auth Status --</option>
+                                                                    <option value="Approved">Approved</option>
+                                                                    <option value="Pending">Pending</option>
+                                                                    <option value="Closed">Closed</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-lg-3">
+                                                                <label></label>
+                                                                <div class="checkbox-inline" style="margin-top: 0.6em !important;">
+                                                                    <label class="checkbox">
+                                                                    <input type="checkbox" name="p_no_auth" value="1">
+                                                                    <span></span>No Auth</label>
+                                                                    <label class="checkbox">
+                                                                </label></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <div class="col-lg-3">
+                                                                <label>Diag1</label>
+                                                                <input type="text" class="form-control" name="p_diag1" placeholder="Enter Diag Code">
+                                                            </div>
+                                                            <div class="col-lg-3">
+                                                                <label>Diag2</label>
+                                                                <input type="text" class="form-control" name="p_diag2" placeholder="Enter Diag Code">
+                                                            </div>
+                                                            <div class="col-lg-3">
+                                                                <label>Diag3</label>
+                                                                <input type="text" class="form-control" name="p_diag3" placeholder="Enter Diag Code">
+                                                            </div>
+                                                            <div class="col-lg-3">
+                                                                <label>Diag4</label>
+                                                                <input type="text" class="form-control" name="p_diag4" placeholder="Enter Diag Code">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <div class="col-lg-3">
+                                                                <label>Eff. Start Dt</label>
+                                                                <input type="text" class="form-control" name="p_effective_start" placeholder="Auth Start Date">
+                                                            </div>
+                                                            <div class="col-lg-3">
+                                                                <label>Eff. End Dt</label>
+                                                                <input type="text" class="form-control" name="p_effective_end" placeholder="Auth End Date">
+                                                            </div>
+                                                            <div class="col-lg-3">
+                                                                <label>Rendering Provider</label>
+                                                                <select class="form-control" name="p_auth_provider_id">
+                                                                    <option value="">-- Select Provider --</option>
+                                                                    <option value="1">Provider A</option>
+                                                                    <option value="2">Provider B</option>
+                                                                    <option value="3">Provider C</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>                
                                                     </div>
                                                 </div>
                                             </div>
-                                        </form>
+                                            <div class="card">
+                                                <div class="card-header" id="headingTwo7">
+                                                    <div class="card-title collapsed" data-toggle="collapse" data-target="#collapseTwo7">
+                                                        <span class="svg-icon svg-icon-primary">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                                    <polygon points="0 0 24 0 24 24 0 24"></polygon>
+                                                                    <path d="M12.2928955,6.70710318 C11.9023712,6.31657888 11.9023712,5.68341391 12.2928955,5.29288961 C12.6834198,4.90236532 13.3165848,4.90236532 13.7071091,5.29288961 L19.7071091,11.2928896 C20.085688,11.6714686 20.0989336,12.281055 19.7371564,12.675721 L14.2371564,18.675721 C13.863964,19.08284 13.2313966,19.1103429 12.8242777,18.7371505 C12.4171587,18.3639581 12.3896557,17.7313908 12.7628481,17.3242718 L17.6158645,12.0300721 L12.2928955,6.70710318 Z" fill="#000000" fill-rule="nonzero"></path>
+                                                                    <path d="M3.70710678,15.7071068 C3.31658249,16.0976311 2.68341751,16.0976311 2.29289322,15.7071068 C1.90236893,15.3165825 1.90236893,14.6834175 2.29289322,14.2928932 L8.29289322,8.29289322 C8.67147216,7.91431428 9.28105859,7.90106866 9.67572463,8.26284586 L15.6757246,13.7628459 C16.0828436,14.1360383 16.1103465,14.7686056 15.7371541,15.1757246 C15.3639617,15.5828436 14.7313944,15.6103465 14.3242754,15.2371541 L9.03007575,10.3841378 L3.70710678,15.7071068 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" transform="translate(9.000003, 11.999999) rotate(-270.000000) translate(-9.000003, -11.999999) "></path>
+                                                                </g>
+                                                            </svg>
+                                                        </span>
+                                                        <div class="card-label pl-4">Secondary Insurance</div>
+                                                    </div>
+                                                </div>
+                                                <div id="collapseTwo7" class="collapse" data-parent="#accordionExample7">
+                                                    <div class="card-body pl-12">
+                                                        <h4 class="mb-10 font-weight-bold text-dark">Secondary Insurance Information</h4>
+                                                        <div class="form-group row">
+                                                            <div class="col-lg-3">
+                                                                <label>Insurance Name</label>
+                                                                <select class="form-control" name="s_payer_id">
+                                                                    <option value="">-- Select Insurance --</option>
+                                                                    <option value="1">Aetna</option>
+                                                                    <option value="2">Emblem Health</option>
+                                                                    <option value="3">United Health Care</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-lg-3">
+                                                                <label>Policy ID</label>
+                                                                <input type="text" class="form-control" name="s_policy_number" placeholder="Enter Policy #">
+                                                            </div>
+                                                            <div class="col-lg-3">
+                                                                <label>Eff. Start Dt</label>
+                                                                <input type="text" class="form-control" name="s_policy_start" placeholder="Policy Start Date">
+                                                            </div>
+                                                            <div class="col-lg-3">
+                                                                <label>Eff. End Dt</label>
+                                                                <input type="text" class="form-control" name="s_policy_end" placeholder="Policy End Date">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <div class="col-lg-3">
+                                                                <label>Group ID</label>
+                                                                <input type="text" class="form-control" name="s_group_id" placeholder="Enter Group No.">
+                                                            </div>
+                                                            <div class="col-lg-3">
+                                                                <label>Group Name</label>
+                                                                <input type="text" class="form-control" name="s_group_name" placeholder="Enter Group Name">
+                                                            </div>
+                                                            <div class="col-lg-3">
+                                                                <label>Copay</label>
+                                                                <input type="text" class="form-control" name="s_copay" placeholder="Enter Copay">
+                                                            </div>
+                                                            <div class="col-lg-3">
+                                                                <label>Deductible</label>
+                                                                <input type="text" class="form-control" name="s_deductible" placeholder="Enter Deductible">
+                                                            </div>
+                                                        </div>
+                                                        <h4 class="mb-10 font-weight-bold text-dark">Auth Information</h4>
+                                                        <div class="form-group row">
+                                                            <div class="col-lg-3">
+                                                                <label>Auth #</label>
+                                                                <input type="text" class="form-control" name="s_authorization" placeholder="Enter Authorization number">
+                                                            </div>
+                                                            <div class="col-lg-3">
+                                                                <label>Serivce</label>
+                                                                <select class="form-control" name="s_speciality">
+                                                                    <option value="">-- Select Service Type --</option>
+                                                                    <option value="1">Behavior Therapy</option>
+                                                                    <option value="2">Speech Therapy</option>
+                                                                    <option value="3">Occupational Therapy</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-lg-3">
+                                                                <label>Status</label>
+                                                                <select class="form-control" name="s_auth_status">
+                                                                    <option value="">-- Select Auth Status --</option>
+                                                                    <option value="Approved">Approved</option>
+                                                                    <option value="Pending">Pending</option>
+                                                                    <option value="Closed">Closed</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-lg-3">
+                                                                <label></label>
+                                                                <div class="checkbox-inline" style="margin-top: 0.6em !important;">
+                                                                    <label class="checkbox">
+                                                                    <input type="checkbox" name="s_no_auth" value="1">
+                                                                    <span></span>No Auth</label>
+                                                                    <label class="checkbox">
+                                                                </label></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <div class="col-lg-3">
+                                                                <label>Diag1</label>
+                                                                <input type="text" class="form-control" name="s_diag1" placeholder="Enter Diag Code">
+                                                            </div>
+                                                            <div class="col-lg-3">
+                                                                <label>Diag2</label>
+                                                                <input type="text" class="form-control" name="s_diag2" placeholder="Enter Diag Code">
+                                                            </div>
+                                                            <div class="col-lg-3">
+                                                                <label>Diag3</label>
+                                                                <input type="text" class="form-control" name="s_diag3" placeholder="Enter Diag Code">
+                                                            </div>
+                                                            <div class="col-lg-3">
+                                                                <label>Diag4</label>
+                                                                <input type="text" class="form-control" name="s_diag4" placeholder="Enter Diag Code">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <div class="col-lg-3">
+                                                                <label>Eff. Start Dt</label>
+                                                                <input type="text" class="form-control" name="s_effective_start" placeholder="Auth Start Date">
+                                                            </div>
+                                                            <div class="col-lg-3">
+                                                                <label>Eff. End Dt</label>
+                                                                <input type="text" class="form-control" name="s_effective_end" placeholder="Auth End Date">
+                                                            </div>
+                                                            <div class="col-lg-3">
+                                                                <label>Rendering Provider</label>
+                                                                <select class="form-control" name="s_auth_provider_id">
+                                                                    <option value="">-- Select Provider --</option>
+                                                                    <option value="1">Provider A</option>
+                                                                    <option value="2">Provider B</option>
+                                                                    <option value="3">Provider C</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="headingThree7">
+                                                    <div class="card-title collapsed" data-toggle="collapse" data-target="#collapseThree7">
+                                                        <span class="svg-icon svg-icon-primary">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                                    <polygon points="0 0 24 0 24 24 0 24"></polygon>
+                                                                    <path d="M12.2928955,6.70710318 C11.9023712,6.31657888 11.9023712,5.68341391 12.2928955,5.29288961 C12.6834198,4.90236532 13.3165848,4.90236532 13.7071091,5.29288961 L19.7071091,11.2928896 C20.085688,11.6714686 20.0989336,12.281055 19.7371564,12.675721 L14.2371564,18.675721 C13.863964,19.08284 13.2313966,19.1103429 12.8242777,18.7371505 C12.4171587,18.3639581 12.3896557,17.7313908 12.7628481,17.3242718 L17.6158645,12.0300721 L12.2928955,6.70710318 Z" fill="#000000" fill-rule="nonzero"></path>
+                                                                    <path d="M3.70710678,15.7071068 C3.31658249,16.0976311 2.68341751,16.0976311 2.29289322,15.7071068 C1.90236893,15.3165825 1.90236893,14.6834175 2.29289322,14.2928932 L8.29289322,8.29289322 C8.67147216,7.91431428 9.28105859,7.90106866 9.67572463,8.26284586 L15.6757246,13.7628459 C16.0828436,14.1360383 16.1103465,14.7686056 15.7371541,15.1757246 C15.3639617,15.5828436 14.7313944,15.6103465 14.3242754,15.2371541 L9.03007575,10.3841378 L3.70710678,15.7071068 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" transform="translate(9.000003, 11.999999) rotate(-270.000000) translate(-9.000003, -11.999999) "></path>
+                                                                </g>
+                                                            </svg>
+                                                        </span>
+                                                        <div class="card-label pl-4">Teritary Insurance</div>
+                                                    </div>
+                                                </div>
+                                                <div id="collapseThree7" class="collapse" data-parent="#accordionExample7">
+                                                    <div class="card-body pl-12">
+                                                        <h4 class="mb-10 font-weight-bold text-dark">Teritary Insurance Information</h4>
+                                                        <div class="form-group row">
+                                                            <div class="col-lg-3">
+                                                                <label>Insurance Name</label>
+                                                                <select class="form-control" name="t_payer_id">
+                                                                    <option value="">-- Select Insurance --</option>
+                                                                    <option value="1">Aetna</option>
+                                                                    <option value="2">Emblem Health</option>
+                                                                    <option value="3">United Health Care</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-lg-3">
+                                                                <label>Policy ID</label>
+                                                                <input type="text" class="form-control" name="t_policy_number" placeholder="Enter Policy #">
+                                                            </div>
+                                                            <div class="col-lg-3">
+                                                                <label>Eff. Start Dt</label>
+                                                                <input type="text" class="form-control" name="t_policy_start" placeholder="Policy Start Date">
+                                                            </div>
+                                                            <div class="col-lg-3">
+                                                                <label>Eff. End Dt</label>
+                                                                <input type="text" class="form-control" name="t_policy_end" placeholder="Policy End Date">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <div class="col-lg-3">
+                                                                <label>Group ID</label>
+                                                                <input type="text" class="form-control" name="t_group_id" placeholder="Enter Group No.">
+                                                            </div>
+                                                            <div class="col-lg-3">
+                                                                <label>Group Name</label>
+                                                                <input type="text" class="form-control" name="t_group_name" placeholder="Enter Group Name">
+                                                            </div>
+                                                            <div class="col-lg-3">
+                                                                <label>Copay</label>
+                                                                <input type="text" class="form-control" name="t_copay" placeholder="Enter Copay">
+                                                            </div>
+                                                            <div class="col-lg-3">
+                                                                <label>Deductible</label>
+                                                                <input type="text" class="form-control" name="t_deductible" placeholder="Enter Deductible">
+                                                            </div>
+                                                        </div>
+                                                        <h4 class="mb-10 font-weight-bold text-dark">Auth Information</h4>
+                                                        <div class="form-group row">
+                                                            <div class="col-lg-3">
+                                                                <label>Auth #</label>
+                                                                <input type="text" class="form-control" name="t_authorization" placeholder="Enter Authorization number">
+                                                            </div>
+                                                            <div class="col-lg-3">
+                                                                <label>Serivce</label>
+                                                                <select class="form-control" name="t_speciality">
+                                                                    <option value="">-- Select Service Type --</option>
+                                                                    <option value="1">Behavior Therapy</option>
+                                                                    <option value="2">Speech Therapy</option>
+                                                                    <option value="3">Occupational Therapy</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-lg-3">
+                                                                <label>Status</label>
+                                                                <select class="form-control" name="t_auth_status">
+                                                                    <option value="">-- Select Auth Status --</option>
+                                                                    <option value="Approved">Approved</option>
+                                                                    <option value="Pending">Pending</option>
+                                                                    <option value="Closed">Closed</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-lg-3">
+                                                                <label></label>
+                                                                <div class="checkbox-inline" style="margin-top: 0.6em !important;">
+                                                                    <label class="checkbox">
+                                                                    <input type="checkbox" name="t_no_auth" value="1">
+                                                                    <span></span>No Auth</label>
+                                                                    <label class="checkbox">
+                                                                </label></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <div class="col-lg-3">
+                                                                <label>Diag1</label>
+                                                                <input type="text" class="form-control" name="t_diag1" placeholder="Enter Diag Code">
+                                                            </div>
+                                                            <div class="col-lg-3">
+                                                                <label>Diag2</label>
+                                                                <input type="text" class="form-control" name="t_diag2" placeholder="Enter Diag Code">
+                                                            </div>
+                                                            <div class="col-lg-3">
+                                                                <label>Diag3</label>
+                                                                <input type="text" class="form-control" name="t_diag3" placeholder="Enter Diag Code">
+                                                            </div>
+                                                            <div class="col-lg-3">
+                                                                <label>Diag4</label>
+                                                                <input type="text" class="form-control" name="t_diag4" placeholder="Enter Diag Code">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <div class="col-lg-3">
+                                                                <label>Eff. Start Dt</label>
+                                                                <input type="text" class="form-control" name="t_effective_start" placeholder="Auth Start Date">
+                                                            </div>
+                                                            <div class="col-lg-3">
+                                                                <label>Eff. End Dt</label>
+                                                                <input type="text" class="form-control" name="t_effective_end" placeholder="Auth End Date">
+                                                            </div>
+                                                            <div class="col-lg-3">
+                                                                <label>Rendering Provider</label>
+                                                                <select class="form-control" name="t_auth_provider_id">
+                                                                    <option value="">-- Select Provider --</option>
+                                                                    <option value="1">Provider A</option>
+                                                                    <option value="2">Provider B</option>
+                                                                    <option value="3">Provider C</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                     <!--end: Wizard Step 3-->
                                     <!--begin: Wizard Step 4-->
                                     <div class="pb-5" data-wizard-type="step-content">
-                                        <h4 class="mb-10 font-weight-bold text-dark">Auth Information</h4>
-                                        <div class="form-group row">
-                                            <div class="col-lg-4">
-                                                <label>Auth #:</label>
-                                                <input type="text" class="form-control" placeholder="Enter Authorization number">
+                                        <div id="kt_repeater_1">
+                                            <div class="form-group row" id="kt_repeater_1">
+                                                <div data-repeater-list="services_list" class="col-lg-12">
+                                                    <div data-repeater-item class="form-group row align-items-center">
+                                                        <div class="col-md-3">
+                                                            <label>Service Name</label>
+                                                            <select class="form-control" id="service_name" name="service_name">
+                                                                <option value="">-- Select Service --</option>
+                                                                <option value="Self">Assessment</option>
+                                                                <option value="Child">Direct Behavior</option>
+                                                                <option value="Spouse">Supervision</option>
+                                                            </select>
+                                                            <div class="d-md-none mb-2"></div>
+                                                        </div>
+                                                        <div class="col-md-1">
+                                                            <label>Mod1</label>
+                                                            <input type="text" class="form-control" name="mod1" />
+                                                            <div class="d-md-none mb-2"></div>
+                                                        </div>
+                                                        <div class="col-md-1">
+                                                            <label>Mod2</label>
+                                                            <input type="text" class="form-control" name="mod2" />
+                                                            <div class="d-md-none mb-2"></div>
+                                                        </div>
+                                                        <div class="col-md-1">
+                                                            <label>Mod3</label>
+                                                            <input type="text" class="form-control" name="mod3" />
+                                                            <div class="d-md-none mb-2"></div>
+                                                        </div>
+                                                        <div class="col-md-1">
+                                                            <label>Mod4</label>
+                                                            <input type="text" class="form-control" name="mod4" />
+                                                            <div class="d-md-none mb-2"></div>
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <label>Increment</label>
+                                                            <select class="form-control" id="service_increment" name="service_increment">
+                                                                <option value="">-- Select Increment--</option>
+                                                                <option value="15 mins">15 mins</option>
+                                                                <option value="30 mins">30 mins</option>
+                                                                <option value="1 Hour">1 Hour</option>
+                                                                <option value="Entire as One">Entire as One</option>
+                                                            </select>
+                                                            <div class="d-md-none mb-2"></div>
+                                                        </div>
+                                                        <div class="col-md-1">
+                                                            <label>Units</label>
+                                                            <input type="text" class="form-control" name="units" />
+                                                            <div class="d-md-none mb-2"></div>
+                                                        </div>
+                                                        <div class="col-md-1">
+                                                            <label>Rate</label>
+                                                            <input type="text" class="form-control" name="rate" />
+                                                            <div class="d-md-none mb-2"></div>
+                                                        </div>
+                                                        <div class="col-md-1">
+                                                            <a href="javascript:;" data-repeater-delete="" class="btn btn-sm font-weight-bolder btn-light-danger">
+                                                                <i class="la la-trash-o"></i>Delete
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="col-lg-4">
-                                                <label>Serivce:</label>
-                                                <select class="form-control">
-                                                    <option value="">-- Select Service Type --</option>
-                                                    <option value="">Behavior Therapy</option>
-                                                    <option value="">Speech Therapy</option>
-                                                    <option value="">Occupational Therapy</option>
-                                                </select>
+                                            <div class="form-group row">
+                                                <label class="col-lg-2 col-form-label text-right"></label>
+                                                <div class="col-lg-4">
+                                                    <a href="javascript:;" data-repeater-create="" class="btn btn-sm font-weight-bolder btn-light-primary">
+                                                        <i class="la la-plus"></i>Add
+                                                    </a>
+                                                </div>
                                             </div>
-                                            
-                                            <div class="col-lg-4">
-                                                <label>Diag:</label>
-                                                <input type="text" class="form-control" placeholder="Enter Diag Code">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <div class="col-lg-4">
-                                                <label>Eff. Start Dt:</label>
-                                                <input type="text" class="form-control" placeholder="Auth Start Date">
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <label>Eff. End Dt</label>
-                                                <input type="text" class="form-control" placeholder="Auth End Date">
-                                            </div>
-                                            
-                                            <div class="col-lg-4">
-                                                <label></label>
-                                                <div class="checkbox-inline" style="margin-top: 0.6em !important;">
-                                                    <label class="checkbox">
-                                                    <input type="checkbox">
-                                                    <span></span>Place Holder</label>
-                                                    <label class="checkbox">
-                                                    <input type="checkbox" checked="checked">
-                                                    <span></span>No Auth</label>
-                                                    <label class="checkbox">
-                                                </label></div>
-                                            </div>
-                                        </div>
-                                        <h4 class="mb-10 font-weight-bold text-dark">Insurance Information</h4>
-                                        <div class="form-group row">
-                                            <div class="col-lg-4">
-                                                <label>Insurance Name:</label>
-                                                <select class="form-control">
-                                                    <option value="">-- Select Insurance --</option>
-                                                    <option value="">Aetna</option>
-                                                    <option value="">Emblem Health</option>
-                                                    <option value="">United Health Care</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <label>Policy ID:</label>
-                                                <input type="text" class="form-control" placeholder="Enter Policy #">
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <label>Client Relationship:</label>
-                                                <select class="form-control">
-                                                    <option value="">-- Select Guarantor --</option>
-                                                    <option value="">Self</option>
-                                                    <option value="">Son</option>
-                                                    <option value="">Spouse</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <div class="col-lg-4">
-                                                <label>Eff. Start Dt:</label>
-                                                <input type="text" class="form-control" placeholder="Policy Start Date">
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <label>Eff. End Dt</label>
-                                                <input type="text" class="form-control" placeholder="Policy End Date">
-                                            </div>
-                                            
                                         </div>
                                     </div>
                                     <!--end: Wizard Step 4-->
@@ -374,7 +772,7 @@
                                         </div>
                                     </div>
                                     <!--end: Wizard Actions-->
-                                
+                                </form>
                                 <!--end: Wizard Form-->
                             </div>
                         </div>
@@ -436,7 +834,6 @@
                     </ul>
                     <div class="tab-content mt-5" id="myTabContent4">
                         <div class="tab-pane fade show active" id="home-4" role="tabpanel" aria-labelledby="home-tab-4">
-                            <form class="form">
                                 <div class="card-body">
                                     <div class="form-group row">
                                         <div class="col-lg-4">
@@ -545,7 +942,6 @@
                                         </div>
                                     </div>
                                 </div>
-                            </form>
                         </div>
                         <div class="tab-pane fade" id="provider-4" role="tabpanel" aria-labelledby="provider-tab-4">
                             <div class="row">
@@ -553,7 +949,6 @@
                                     <h5 class="font-weight-bold mt-10 mb-6">Service Location Info</h5>
                                 </div>
                             </div>
-                            <form class="form">
                                 <div class="card-body">
                                     <div class="form-group row">
                                         <div class="col-lg-6">
@@ -570,13 +965,11 @@
                                         </div>
                                     </div>
                                 </div>
-                            </form>
                             <div class="row">
                                 <div class="col-lg-12 col-xl-6">
                                     <h5 class="font-weight-bold mt-10 mb-6">Provider Info</h5>
                                 </div>
                             </div>
-                            <form class="form">
                                 <div class="card-body">
                                     <div class="form-group row">
                                         <div class="col-lg-4">
@@ -610,7 +1003,6 @@
                                         </div>
                                     </div>
                                 </div>
-                            </form>
                         </div>
                         <div class="tab-pane fade" id="profile-4" role="tabpanel" aria-labelledby="profile-tab-4">
                             <div class="card card-custom">
@@ -722,5 +1114,47 @@
 @endsection
 
 @push('scripts')
-    
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#guarantorDiv").hide();
+            KTFormRepeater.init();
+        })
+        $("#relationship").on('change',function(){
+            var relationship = $("#relationship").val();
+            if(relationship != "Self"){
+                $("#guarantorDiv").show();
+            }
+            else{
+                $("#guarantorDiv").hide();
+            }
+        })
+
+        var KTFormRepeater = function() {
+            // Private functions
+            var demo1 = function() {
+                $('#kt_repeater_1').repeater({
+                    initEmpty: false,
+
+                    defaultValues: {
+                        'text-input': 'foo'
+                    },
+
+                    show: function () {
+                        $(this).slideDown();
+                    },
+
+                    hide: function (deleteElement) {
+                        $(this).slideUp(deleteElement);
+                    }
+                });
+            }
+
+            return {
+                // public functions
+                init: function() {
+                    demo1();
+                }
+            };
+        }();
+    </script>
 @endpush

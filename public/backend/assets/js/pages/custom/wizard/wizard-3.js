@@ -32,17 +32,17 @@ var KTWizard3 = function () {
 
 						KTUtil.scrollTop();
 					} else {
-						Swal.fire({
-							text: "Sorry, looks like there are some errors detected, please try again.",
-							icon: "error",
-							buttonsStyling: false,
-							confirmButtonText: "Ok, got it!",
-							customClass: {
-								confirmButton: "btn font-weight-bold btn-light"
-							}
-						}).then(function () {
+						// Swal.fire({
+						// 	text: "Sorry, looks like there are some errors detected, please try again.",
+						// 	icon: "error",
+						// 	buttonsStyling: false,
+						// 	confirmButtonText: "Ok, got it!",
+						// 	customClass: {
+						// 		confirmButton: "btn font-weight-bold btn-light"
+						// 	}
+						// }).then(function () {
 							KTUtil.scrollTop();
-						});
+						//});
 					}
 				});
 			}
@@ -89,41 +89,76 @@ var KTWizard3 = function () {
 			_formEl,
 			{
 				fields: {
-					address1: {
+					first_name: {
+						validators: {
+							notEmpty: {
+								message: 'First Name is required'
+							}
+						}
+					},
+					last_name: {
+						validators: {
+							notEmpty: {
+								message: 'Last Name is required'
+							}
+						}
+					},
+					dob: {
+						validators: {
+							notEmpty: {
+								message: 'DOB is required'
+							}
+						}
+					},
+					email: {
+						validators: {
+							notEmpty: {
+								message: 'Email is required'
+							}
+						}
+					},
+					phone_home: {
+						validators: {
+							notEmpty: {
+								message: 'Phone is required'
+							}
+						}
+					},
+					phone_mobile: {
+						validators: {
+							notEmpty: {
+								message: 'Mobile is required'
+							}
+						}
+					},
+					addr: {
 						validators: {
 							notEmpty: {
 								message: 'Address is required'
 							}
 						}
 					},
-					postcode: {
+					addr_zip: {
 						validators: {
 							notEmpty: {
-								message: 'Postcode is required'
+								message: 'Zipcode is required'
 							}
 						}
 					},
-					city: {
+					addr_city: {
 						validators: {
 							notEmpty: {
 								message: 'City is required'
 							}
 						}
 					},
-					state: {
+					addr_state: {
 						validators: {
 							notEmpty: {
 								message: 'State is required'
 							}
 						}
 					},
-					country: {
-						validators: {
-							notEmpty: {
-								message: 'Country is required'
-							}
-						}
-					}
 				},
 				plugins: {
 					trigger: new FormValidation.plugins.Trigger(),
@@ -136,58 +171,43 @@ var KTWizard3 = function () {
 			}
 		));
 
+
 		// Step 2
 		_validations.push(FormValidation.formValidation(
 			_formEl,
 			{
 				fields: {
-					package: {
+					provider_id: {
 						validators: {
 							notEmpty: {
-								message: 'Package details is required'
+								message: 'Provider is required'
 							}
 						}
 					},
-					weight: {
+					default_location: {
 						validators: {
 							notEmpty: {
-								message: 'Package weight is required'
-							},
-							digits: {
-								message: 'The value added is not valid'
+								message: 'Location is required'
 							}
 						}
 					},
-					width: {
+					relationship: {
 						validators: {
 							notEmpty: {
-								message: 'Package width is required'
+								message: 'Relationship is required'
 							},
-							digits: {
-								message: 'The value added is not valid'
-							}
 						}
 					},
-					height: {
-						validators: {
-							notEmpty: {
-								message: 'Package height is required'
-							},
-							digits: {
-								message: 'The value added is not valid'
-							}
-						}
-					},
-					packagelength: {
-						validators: {
-							notEmpty: {
-								message: 'Package length is required'
-							},
-							digits: {
-								message: 'The value added is not valid'
-							}
-						}
-					}
+					// width: {
+					// 	validators: {
+					// 		notEmpty: {
+					// 			message: 'Package width is required'
+					// 		},
+					// 		digits: {
+					// 			message: 'The value added is not valid'
+					// 		}
+					// 	}
+					// },
 				},
 				plugins: {
 					trigger: new FormValidation.plugins.Trigger(),
@@ -205,27 +225,76 @@ var KTWizard3 = function () {
 			_formEl,
 			{
 				fields: {
-					delivery: {
+					p_payer_id: {
 						validators: {
 							notEmpty: {
-								message: 'Delivery type is required'
+								message: 'Payer name is required'
 							}
 						}
 					},
-					packaging: {
+					p_policy_number: {
 						validators: {
 							notEmpty: {
-								message: 'Packaging type is required'
+								message: 'Policy # is required'
 							}
 						}
 					},
-					preferreddelivery: {
+					p_policy_start: {
 						validators: {
 							notEmpty: {
-								message: 'Preferred delivery window is required'
+								message: 'Policy Effective Start is required'
 							}
 						}
-					}
+					},
+					p_policy_end: {
+						validators: {
+							notEmpty: {
+								message: 'Policy Effective End is required'
+							}
+						}
+					},
+					p_authorization: {
+						validators: {
+							notEmpty: {
+								message: 'Authorization is required'
+							}
+						}
+					},
+					p_speciality: {
+						validators: {
+							notEmpty: {
+								message: 'Speciality is required'
+							}
+						}
+					},
+					p_auth_status: {
+						validators: {
+							notEmpty: {
+								message: 'Authorization Status is required'
+							}
+						}
+					},
+					p_diag1: {
+						validators: {
+							notEmpty: {
+								message: 'Diagnosis 1 is required'
+							}
+						}
+					},
+					p_effective_start: {
+						validators: {
+							notEmpty: {
+								message: 'Auth Effective Start is required'
+							}
+						}
+					},
+					p_effective_end: {
+						validators: {
+							notEmpty: {
+								message: 'Auth Effective End is required'
+							}
+						}
+					},
 				},
 				plugins: {
 					trigger: new FormValidation.plugins.Trigger(),
@@ -243,38 +312,38 @@ var KTWizard3 = function () {
 			_formEl,
 			{
 				fields: {
-					locaddress1: {
+					service_name: {
 						validators: {
 							notEmpty: {
-								message: 'Address is required'
+								message: 'Service is required'
 							}
 						}
 					},
-					locpostcode: {
+					mod1: {
 						validators: {
 							notEmpty: {
-								message: 'Postcode is required'
+								message: 'Modifier 1 is required'
 							}
 						}
 					},
-					loccity: {
+					service_increment: {
 						validators: {
 							notEmpty: {
-								message: 'City is required'
+								message: 'Service Increment is required'
 							}
 						}
 					},
-					locstate: {
+					units: {
 						validators: {
 							notEmpty: {
-								message: 'State is required'
+								message: 'Units is required'
 							}
 						}
 					},
-					loccountry: {
+					rate: {
 						validators: {
 							notEmpty: {
-								message: 'Country is required'
+								message: 'Rate is required'
 							}
 						}
 					}
